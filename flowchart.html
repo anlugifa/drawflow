@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>        
+        <link rel="stylesheet" href="https://github.com/sdrdis/jquery.flowchart/blob/master/jquery.flowchart.css" />
+        
+        <script src="jquery.min.js"></script>
+        <script src="jquery-ui.min.js"></script>
+        <script src="jquery.flowchart.js"></script>
+
+    </head>
+
+    <body>
+        <input type="text" id="node_name" >
+        <button onclick="addn()">ADD</button>
+
+        <div id="drawflow"></div>
+
+    </body>
+
+    <script>
+        var example = document.getElementById("drawflow");
+        const editor = new Drawflow(example);
+        editor.start();
+
+        editor.zoom_max = 1.6;
+        editor.zoom_min = 0.5;
+
+        function addn()
+        {
+            var text = document.getElementById("node_name").value;
+
+            var html = document.createElement("div");
+            html.innerHTML = text;
+            
+            var data = {'name': 'teste'};
+
+            editor.registerNode('myNode', html);
+            editor.addNode('newNode', 0, 1, 150, 300, 'newNode', data, 'myNode', true);            
+        }
+
+    </script>
+</html>
